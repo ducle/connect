@@ -219,7 +219,6 @@
                 "Low": 1,
                 "Normal": 14
             },
-            "duplicate": true,
             "dust_limit": 546,
             "force_bip143": false,
             "fork_id": null,
@@ -762,7 +761,6 @@
             "blockbook": [],
             "chain": "ath",
             "chain_id": 1620,
-            "duplicate": true,
             "name": "Atheios",
             "rskip60": false,
             "shortcut": "ATH",
