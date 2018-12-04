@@ -396,6 +396,10 @@ class TrezorConnect {
         return await call({ method: 'pushTransaction', ...params });
     }
 
+    static qtumSignTransaction: $T.QtumSignTransaction = async (params) => {
+        return await call({ method: 'qtumSignTransaction', ...params });
+    }
+
     static rippleGetAddress: $T.RippleGetAddress = async (params) => {
         return await call({ method: 'rippleGetAddress', ...params });
     }

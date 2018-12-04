@@ -6,6 +6,7 @@ import { validateParams } from './helpers/paramsValidator';
 import { getCoinInfoByCurrency } from '../../data/CoinInfo';
 import { getLabel } from '../../utils/pathUtils';
 import { NO_COIN_INFO } from '../../constants/errors';
+import { Transaction as BitcoinJsTransaction } from 'bitcoinjs-lib-zcash';
 
 import BlockBook, { create as createBackend } from '../../backend';
 import * as helper from './helpers/signtx';
@@ -39,7 +40,7 @@ type Params = {
     push: boolean,
 }
 
-export default class SignTransaction extends AbstractMethod {
+export default class QtumSignTransaction extends AbstractMethod {
     params: Params;
     backend: BlockBook;
 
@@ -93,14 +94,13 @@ export default class SignTransaction extends AbstractMethod {
             hdInputs,
             outputs: payload.outputs,
             coinInfo,
+            prevTxHex: payload.prevTxHex,
             push: payload.hasOwnProperty('push') ? payload.push : false,
         };
     }
 
     async run(): Promise<SignedTx> {
-        // initialize backend
-        this.backend = await createBackend(this.params.coinInfo);
-        const bjsRefTxs = await this.backend.loadTransactions(getReferencedTransactions(this.params.hdInputs));
+        const bjsRefTxs = [BitcoinJsTransaction.fromHex(this.params.prevTxHex, false)]
         const refTxs = transformReferencedTransactions(bjsRefTxs);
 
         const response = await helper.signTx(

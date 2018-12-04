@@ -29,6 +29,7 @@ import LiskSignMessage from './LiskSignMessage';
 import LiskVerifyMessage from './LiskVerifyMessage';
 import LiskSignTransaction from './LiskSignTransaction';
 import PushTransaction from './PushTransaction';
+import QtumSignTransaction from './QtumSignTransaction';
 import RequestLogin from './RequestLogin';
 import ResetDevice from './ResetDevice';
 import RippleGetAddress from './RippleGetAddress';
@@ -67,6 +68,7 @@ const classes: {[k: string]: any} = {
     'liskSignTransaction': LiskSignTransaction,
     'liskVerifyMessage': LiskVerifyMessage,
     'pushTransaction': PushTransaction,
+    'qtumSignTransaction': QtumSignTransaction,
     'requestLogin': RequestLogin,
     'resetDevice': ResetDevice,
     'rippleGetAddress': RippleGetAddress,
