@@ -8,14 +8,12 @@ import { getLabel } from '../../utils/pathUtils';
 import { NO_COIN_INFO } from '../../constants/errors';
 import { Transaction as BitcoinJsTransaction } from 'bitcoinjs-lib-zcash';
 
-import BlockBook, { create as createBackend } from '../../backend';
 import * as helper from './helpers/signtx';
 
 import {
     validateTrezorInputs,
     validateTrezorOutputs,
     inputToHD,
-    getReferencedTransactions,
     transformReferencedTransactions,
 } from './tx';
 
@@ -100,7 +98,7 @@ export default class QtumSignTransaction extends AbstractMethod {
     }
 
     async run(): Promise<SignedTx> {
-        const bjsRefTxs = [BitcoinJsTransaction.fromHex(this.params.prevTxHex, false)]
+        const bjsRefTxs = [BitcoinJsTransaction.fromHex(this.params.prevTxHex, false)];
         const refTxs = transformReferencedTransactions(bjsRefTxs);
 
         const response = await helper.signTx(
