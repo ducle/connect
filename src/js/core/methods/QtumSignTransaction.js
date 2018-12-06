@@ -35,12 +35,12 @@ type Params = {
     hdInputs: Array<BuildTxInput>,
     outputs: Array<TransactionOutput>,
     coinInfo: CoinInfo,
+    prevTxHex: string,
     push: boolean,
 }
 
 export default class QtumSignTransaction extends AbstractMethod {
     params: Params;
-    backend: BlockBook;
 
     constructor(message: CoreMessage) {
         super(message);
@@ -108,14 +108,6 @@ export default class QtumSignTransaction extends AbstractMethod {
             refTxs,
             this.params.coinInfo,
         );
-
-        if (this.params.push) {
-            const txid: string = await this.backend.sendTransactionHex(response.serializedTx);
-            return {
-                ...response,
-                txid,
-            };
-        }
 
         return response;
     }
