@@ -105,6 +105,11 @@ import type {
     ExpectedRippleSignTransactionResponse,
 } from 'flowtype/tests/ripple-sign-transaction';
 
+import type {
+    TestQtumSignTransactionPayload,
+    ExpectedQtumSignTransactionResponse,
+} from 'flowtype/tests/qtum-sign-transaction';
+
 declare module 'flowtype/tests' {
     // declare export type GetAddressAvailableSubtests = 'btc' | 'ltc' | 'tbtc' | 'bch';
     // declare export type GetAddressSegwitAvailableSubtests = 'showSegwit';
@@ -154,6 +159,7 @@ declare module 'flowtype/tests' {
     declare export type SubtestNemSignTransaction = Subtest<TestNemSignTransactionPayload, ExpectedNemSignTransactionResponse>;
     declare export type SubtestPassphrase = Subtest<TestPassphrasePayload, ExpectedPassphraseResponse>;
     declare export type SubtestLiskSignTransaction = Subtest<TestLiskSignTransactionPayload, ExpectedLiskSignTransactionResponse>;
+    declare export type SubtestQtumSignTransaction = Subtest<TestQtummSignTransactionPayload, ExpectedQtumSignTransactionResponse>;
 
     declare export type TestPayload =
         TestCardanoGetAddressPayload
@@ -176,7 +182,8 @@ declare module 'flowtype/tests' {
         | TestLiskVerifyMessagePayload
         | TestLiskSignTransactionPayload
         | TestRippleGetAddressPayload
-        | TestRippleSignTransactionPayload;
+        | TestRippleSignTransactionPayload
+        | TestQtumSignTransactionPayload;
 
     declare export type ExpectedResponse =
         ExpectedCardanoGetAddressResponse
@@ -199,7 +206,8 @@ declare module 'flowtype/tests' {
         | ExpectedLiskVerifyMessageResponse
         | ExpectedLiskSignTransactionResponse
         | ExpectedRippleGetAddressResponse
-        | ExpectedRippleSignTransactionResponse;
+        | ExpectedRippleSignTransactionResponse
+        | ExpectedQtumSignTransactionResponse;
 
     declare export type SubtestFunction = SubtestGetAddress
     | SubtestSignMessage
@@ -209,7 +217,8 @@ declare module 'flowtype/tests' {
     | SubtestGetAccountInfo
     | SubtestNemSignTransaction
     | SubtestPassphrase
-    | SubtestLiskSignTransaction;
+    | SubtestLiskSignTransaction
+    | SubtestQtumSignTransaction;
 
     declare export type TestFunction = {
         testName: string,
@@ -250,5 +259,6 @@ declare module 'flowtype/tests' {
         liskSignTransaction(): TestFunction,
         rippleGetAddress(): TestFunction,
         rippleSignTransaction(): TestFunction,
+        qtumSignTransaction(): TestFunction,
     };
 }
