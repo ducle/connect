@@ -313,7 +313,7 @@ const lotsOfOutputs = (): SubtestQtumSignTransaction => {
     let serializedTx = '0100000002fb792f470a58993e14964c9bd46cdf37cb4bbc3f61540cb651580c82ed243ec6010000006b483045022100969da46f94a81f34f3717b014e0c3e1826eda1b0022ec2f9ce39f3d750ab9235022026da269770993211a1503413566a339bbb4389a482fffcf8e1f76713fc3b94f5012103477b9f0f34ae85434ce795f0c5e1e90c9420e5b5fad084d7cce9a487b94a7902ffffffffe56582d2119100cb1d3da8232291e053f71e25fb669c87b32a667749959ea239010000006a473044022052e1419bb237b9db400ab5e3df16db6355619d545fde9030924a360763ae9ad40220704beab04d72ecaeb42eca7d98faca7a0941e65f2e1341f183be2b83e6b09e1c012103477b9f0f34ae85434ce795f0c5e1e90c9420e5b5fad084d7cce9a487b94a7902fffffffffdff00';
     serializedTx = serializedTx + 'd8270000000000001976a914f0a2b64e56ee2ff57126232f84af6e3a41d4055088ac'.repeat(total);
     serializedTx = serializedTx + '00000000';
-    const expectedResponses: Array<ExpectedSignTransactionResponse> = [
+    const expectedResponses: Array<ExpectedQtumSignTransactionResponse> = [
         {
             payload: {
                 serializedTx,
@@ -443,11 +443,11 @@ const spendCoinbase = (): SubtestQtumSignTransaction => {
     };
 };
 
-const twoChanges = (): SubtestSignTransaction => {
+const twoChanges = (): SubtestQtumSignTransaction => {
     // tx e5040e1bc1ae7667ffb9e5248e90b2fb93cd9150234151ce90e14ab2f5933bcd
-    const testPayloads: Array<TestSignTransactionPayload> = [
+    const testPayloads: Array<TestQtumSignTransactionPayload> = [
         {
-            method: 'signTransaction',
+            method: 'qtumSignTransaction',
             coin: 'Testnet',
             inputs: [
                 {
@@ -478,7 +478,7 @@ const twoChanges = (): SubtestSignTransaction => {
         },
     ];
 
-    const expectedResponses: Array<ExpectedSignTransactionResponse> = [
+    const expectedResponses: Array<ExpectedQtumSignTransactionResponse> = [
         {
             payload: {
                 signatures: [ '30440220246a5d5d21730d5de70ce9b9f46067b7bee2a448361a8a42274a8a9408b3211d022035c5fe94b8ee3c825d1c3ae86e31ec64671db27c6488cbc616b4c21b79902727' ],
@@ -494,10 +494,10 @@ const twoChanges = (): SubtestSignTransaction => {
     };
 };
 
-const p2sh = (): SubtestSignTransaction => {
-    const testPayloads: Array<TestSignTransactionPayload> = [
+const p2sh = (): SubtestQtumSignTransaction => {
+    const testPayloads: Array<TestQtumSignTransactionPayload> = [
         {
-            method: 'signTransaction',
+            method: 'qtumSignTransaction',
             coin: 'Bitcoin',
             inputs: [
                 {
@@ -516,7 +516,7 @@ const p2sh = (): SubtestSignTransaction => {
         },
     ];
 
-    const expectedResponses: Array<ExpectedSignTransactionResponse> = [
+    const expectedResponses: Array<ExpectedQtumSignTransactionResponse> = [
         {
             payload: {
                 serializedTx: '0100000001a3fb2d38322c3b327e54005cebc0686d52fcdf536e53bb5ef481a7de8056aa54010000006b4830450221009e020b0390ccad533b73b552f8a99a9d827212c558e4f755503674d07c92ad4502202d606f7316990e0461c51d4add25054f19c697aa3e3c2ced4d568f0b2c57e62f0121023230848585885f63803a0a8aecdd6538792d5c539215c91698e315bf0253b43dffffffff0170f305000000000017a9147f844bdb0b8fd54b64e3d16c85dc1170f1ff97c18700000000',
@@ -531,10 +531,10 @@ const p2sh = (): SubtestSignTransaction => {
     };
 };
 
-const changeOnMainChainAllowed = (): SubtestSignTransaction => {
-    const testPayloads: Array<TestSignTransactionPayload> = [
+const changeOnMainChainAllowed = (): SubtestQtumSignTransaction => {
+    const testPayloads: Array<TestQtumSignTransactionPayload> = [
         {
-            method: 'signTransaction',
+            method: 'qtumSignTransaction',
             coin: 'Testnet',
             inputs: [
                 {
@@ -559,7 +559,7 @@ const changeOnMainChainAllowed = (): SubtestSignTransaction => {
         },
     ];
 
-    const expectedResponses: Array<ExpectedSignTransactionResponse> = [
+    const expectedResponses: Array<ExpectedQtumSignTransactionResponse> = [
         {
             payload: {
                 signatures: ['304402202cf32c9a07a8bd86061df3554d9b0cfad516006a9b368e1c016dff3492ac2ac1022069927e583bdcdc48e254f2f1da6e8cd4b1338ca102e6200ac47a160b14b10b9b'],
@@ -575,7 +575,7 @@ const changeOnMainChainAllowed = (): SubtestSignTransaction => {
     };
 };
 
-export const signTransaction = (): TestFunction => {
+export const qtumSignTransaction = (): TestFunction => {
     const availableSubtests = {
         oneOneFee,
         oneTwoFee,
@@ -591,7 +591,7 @@ export const signTransaction = (): TestFunction => {
         p2sh,
         changeOnMainChainAllowed,
     };
-    const testName = 'SignTransaction';
+    const testName = 'QtumSignTransaction';
     return {
         testName,
         subtests: {

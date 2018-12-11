@@ -159,7 +159,7 @@ declare module 'flowtype/tests' {
     declare export type SubtestNemSignTransaction = Subtest<TestNemSignTransactionPayload, ExpectedNemSignTransactionResponse>;
     declare export type SubtestPassphrase = Subtest<TestPassphrasePayload, ExpectedPassphraseResponse>;
     declare export type SubtestLiskSignTransaction = Subtest<TestLiskSignTransactionPayload, ExpectedLiskSignTransactionResponse>;
-    declare export type SubtestQtumSignTransaction = Subtest<TestQtummSignTransactionPayload, ExpectedQtumSignTransactionResponse>;
+    declare export type SubtestQtumSignTransaction = Subtest<TestQtumSignTransactionPayload, ExpectedQtumSignTransactionResponse>;
 
     declare export type TestPayload =
         TestCardanoGetAddressPayload
