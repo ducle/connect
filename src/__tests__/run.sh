@@ -62,6 +62,8 @@ nemSignTransactionMultisig_subtests="aggregateModification multisig multisigSign
 nemSignTransactionOthers_subtests="importanceTransfer provisionNamespace"
 nemSignTransactionTransfers_subtests="simple xemAsMosaic unknownMosaic knownMosaic knownMosaicWithLevy multipleMosaics"
 
+qtumSignTransaction_subtests="oneOneFee oneTwoFee oneThreeFee twoTwo testnetOneTwoFee testnetFeeTooHigh lotsOfOutputs feeTooHigh notEnoughFunds spendCoinbase twoChanges p2sh changeOnMainChainAllowed"
+
 getAccountInfo_subtests="firstAccount zeroBalance pathInvalid zeroBalance xpubInsteadOfPath"
 
 passphrase_subtests="correctPassphrase wrongPassphrase"
