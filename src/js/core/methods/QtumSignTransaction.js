@@ -35,7 +35,7 @@ type Params = {
     hdInputs: Array<BuildTxInput>,
     outputs: Array<TransactionOutput>,
     coinInfo: CoinInfo,
-    prevTxHex: string,
+    prevTxHexList: Array<string>,
     push: boolean,
 }
 
@@ -92,13 +92,16 @@ export default class QtumSignTransaction extends AbstractMethod {
             hdInputs,
             outputs: payload.outputs,
             coinInfo,
-            prevTxHex: payload.prevTxHex,
+            prevTxHexList: payload.prevTxHexList,
             push: payload.hasOwnProperty('push') ? payload.push : false,
         };
     }
 
     async run(): Promise<SignedTx> {
-        const bjsRefTxs = [BitcoinJsTransaction.fromHex(this.params.prevTxHex, false)];
+        const bjsRefTxs = this.params.prevTxHexList.map(item => {
+            return BitcoinJsTransaction.fromHex(item, false);
+        });
+
         const refTxs = transformReferencedTransactions(bjsRefTxs);
 
         const response = await helper.signTx(
