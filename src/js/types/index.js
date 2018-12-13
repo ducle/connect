@@ -155,6 +155,7 @@ import * as ETHEREUM from './ethereum';
 import * as NEM from './nem';
 import * as STELLAR from './stellar';
 import * as LISK from './lisk';
+import * as QTUM from './qtum';
 
 // export type UiResponseFn = (settings: UiResponse) => void;
 export type ChangeSettings = (settings: Settings) => void;
@@ -264,6 +265,8 @@ export type StellarGetAddress = typeof F_StellarGetAddress;
 export type StellarSignTransaction = (STELLAR.$StellarSignTransaction) => Promise<STELLAR.StellarSignTransaction$>;
 export type VerifyMessage = (P.$VerifyMessage) => Promise<R.VerifyMessage$>;
 export type WipeDevice = (P.$WipeDevice) => Promise<R.WipeDevice$>;
+
+export type QtumSignTransaction = (QTUM.$QtumSignTransaction) => Promise<QTUM.QtumSignTransaction$>;
 
 // export * from './params';
 export * from './response';
